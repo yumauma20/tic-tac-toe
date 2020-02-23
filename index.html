@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>○×ゲーム</title>
+    <link href="reset.css" rel="stylesheet" />
+    <link href="app.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>○×ゲーム</h1>
+      <div class="game-container">
+        
+        <div class="message-container">
+          <ul class="message-list">
+            <li class="js-hidden">
+              <span class="maru">○</span>のばん
+            </li>
+            <li>
+              <span class="batsu">×</span>のばん
+            </li>
+            <li class="js-hidden">
+              <span class="maru">○</span>の勝ち！
+            </li>
+            <li class="js-hidden">
+              <span class="batsu">×</span>の勝ち！
+            </li>
+            <li class="js-hidden">
+              引き分け
+            </li>
+          </ul>
+        </div>
+
+        <div class="squares-container">
+          <div class="squares-box">
+            <div class="square js-maru-checked"></div>
+            <div class="square js-batsu-checked"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <span class="btn btn-reset">
+            もう一回遊ぶ
+          </span>
+        </div>
+
+      </div>
+    </div>
+<!--     <script src="app.js"></script> -->
+  </body>
+</html>
