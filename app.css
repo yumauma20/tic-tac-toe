@@ -127,3 +127,12 @@ html {
     background-color: #ffd347;
     transition-duration: 0.4s;
   }
+
+  .js-unclickable {
+    pointer-events: none;
+  }
+
+  .symbol-holder {
+    display: inline-block;
+    width: 20px;
+  }

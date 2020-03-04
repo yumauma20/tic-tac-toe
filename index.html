@@ -13,23 +13,24 @@
         
         <div class="message-container">
           <ul class="message-list">
-            <li class="js-hidden">
-              <span class="maru">○</span>のばん
+            <li id="maru-turn" class="js-hidden">
+              <span class="maru symbol-holder">○</span>のばん
             </li>
-            <li>
-              <span class="batsu">×</span>のばん
+            <li id="batsu-turn">
+              <span class="batsu symbol-holder">×</span>のばん
             </li>
-            <li class="js-hidden">
-              <span class="maru">○</span>の勝ち！
+            <li id="maru-win" class="js-hidden">
+              <span class="maru symbol-holder">○</span>の勝ち！
             </li>
-            <li class="js-hidden">
-              <span class="batsu">×</span>の勝ち！
+            <li id="batsu-win" class="js-hidden">
+              <span class="batsu symbol-holder">×</span>の勝ち！
             </li>
-            <li class="js-hidden">
+            <li id="draw" class="js-hidden">
               引き分け
             </li>
           </ul>
         </div>
+        
 
         <div class="squares-container">
           <div class="squares-box">
@@ -53,6 +54,6 @@
 
       </div>
     </div>
-<!--     <script src="app.js"></script> -->
+    <script src="app.js"></script>
   </body>
 </html>
