@@ -136,3 +136,7 @@ html {
     display: inline-block;
     width: 20px;
   }
+
+  .js-highLight {
+    background-color: #fff2cc;
+  }

@@ -1,6 +1,6 @@
 // flagがfalseのときバツのターン、trueのときマルのターン
 let flag = false;
-
+// ターン数カウンター
 let counter = 9;
 
 // square を取得
@@ -12,6 +12,9 @@ const squaresArray = [].slice.call(squares);
 const messages = document.querySelectorAll('.message-list li');
 // Array に変換
 const messagesArray = [].slice.call(messages);
+
+// リセットボタン取得
+const resetBtn = document.getElementById('reset-btn');
 
 // メッセージ切り替え関数
 function setMessage(id) {
@@ -42,6 +45,8 @@ const line8 = filterById(squaresArray, ['1-3', '2-2', '3-1']);
 
 const lineArray = [line1, line2, line3, line4, line5, line6, line7, line8];
 
+let winningLine = null;
+
 // 勝敗判定
 function isWinner(symbol) { 
   const result = lineArray.some(function (line) {
@@ -53,9 +58,28 @@ function isWinner(symbol) {
         return square.classList.contains('js-batsu-checked');
       }
     });
+    // trueを返したlineをwinningLineに代入
+    if (subResult) { winningLine = line }
+    
     return subResult;
   });
   return result;
+}
+
+// ゲーム終了時の処理
+function gameOver() {
+  // 全てのマスをクリックできないようにする
+  squaresArray.forEach(function (square) {
+    square.classList.add('js-unclickable');
+  });
+  // 勝ったときのマス目をハイライトする
+  if (winningLine) {
+    winningLine.forEach(function (square) {
+      square.classList.add('js-highLight');
+    });
+  }
+  // リセットボタン表示
+  resetBtn.classList.remove('js-hidden');
 }
 
 // マス目をクリックしたときにイベント発火
@@ -69,6 +93,7 @@ squaresArray.forEach(function (square) {
       // マル勝利判定
       if (isWinner('maru')) {
         setMessage('maru-win');
+        gameOver();
         return;
       }
       
@@ -82,24 +107,38 @@ squaresArray.forEach(function (square) {
       // バツ勝利判定
       if (isWinner('batsu')) {
         setMessage('batsu-win');
+        gameOver();
         return;
       }
 
       setMessage('maru-turn');
       flag = true;
     }
-
-    if (flag === true) {
-
-    }else{
-
-    }
-
+    
     counter--;
-
+    // 引き分け
     if (counter === 0) {
       setMessage('draw');
+      gameOver();
     }
+ 
+  });
 
+  function initGame(){
+    flag = false;
+    counter = 9;
+    winningLine = null;
+    squaresArray.forEach(function (square) {
+      square.classList.remove('js-maru-checked');
+      square.classList.remove('js-batsu-checked');
+      square.classList.remove('js-unclickable');
+      square.classList.remove('js-highLight');
+    });
+    setMessage('batsu-turn');
+    resetBtn.classList.add('js-hidden');
+  }
+
+  resetBtn.addEventListener('click', function () {
+    initGame();
   });
 });
